@@ -10,7 +10,7 @@ Urban sound detection can play a key role in safety systems for cities, campuses
 ## project Structure:
 ```bash
 Public_Safety_Sound_Classifier/
-├── app.py Flask app
+├── app.py ← Flask app
 ├── app_gradio.py ← Hugging Face Spcae app
 ├── PublicSafetyClassifier.ipynb ← Full training 
 ├── models/
@@ -44,10 +44,9 @@ After training on a filtered subset of UrbanSound8K:
 
 - **Accuracy**: ~87%
 - **Recall (Unsafe)**: **~86%** after threshold tuning and class weighting
-- **False Negative Rate (Unsafe as Safe)**: Reduced from 100 to 65 with tuning
+- **False Negative Rate (Unsafe as Safe)**: Reduced 
 
 ![Confusion Matrix](confusion_matrix.png)
-
 
 ## Web App: Flask Interface
 
