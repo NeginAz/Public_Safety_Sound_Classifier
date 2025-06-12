@@ -46,7 +46,7 @@ After training on a filtered subset of UrbanSound8K:
 - **Recall (Unsafe)**: **~86%** after threshold tuning and class weighting
 - **False Negative Rate (Unsafe as Safe)**: Reduced 
 
-![Confusion Matrix](image/confusion_matrix.png)
+![Confusion Matrix](images/confusion_matrix.png)
 
 ## Web App: Flask Interface
 
