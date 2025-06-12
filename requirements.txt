@@ -1,0 +1,7 @@
+flask
+numpy < 2
+librosa
+scikit-learn
+matplotlib
+tensorflow
+
