@@ -1,24 +1,25 @@
 # Public Safety Sound Classifier
 
-A machine learning project that classifies short urban audio clips as **SAFE** or **UNSAFE** to assist in real-time public safety monitoring. This system was developed using the **UrbanSound8k** dataset and is deplyed as asimple **Flask web app* for audio file upload and classification.
+A machine learning project that classifies short urban audio clips as **SAFE** or **UNSAFE** to assist in real-time public safety monitoring. This system was developed using the **UrbanSound8k** dataset and is deplyed as a simple **Flask web app* for audio file upload and classification.
 
 This project showcases end-to-end ML developement: from data preprocessing and model training to building real-world interface for deployment. This interface is suitable for smart city applications and safety-critical environments. 
 
 ## Motivation: 
-Urban sound detection can play a key role in safety systems for cities, campuses, or industrial sites. Detecting critical sounds such as **gunshots**, **rirens** , or **dog barks** helps flag potentially dangerous environments. This model aims to prioritze **recall for unsafe sounds**, ensuring that high risk events are rarely missed, even at the cost of  false alarms. 
+Urban sound detection can play a key role in safety systems for cities, campuses, or industrial sites. Detecting critical sounds such as **gunshots**, **sirens** , or **dog barks** helps flag potentially dangerous environments. This model aims to prioritze **recall for unsafe sounds**, ensuring that high risk events are rarely missed, even at the cost of  false alarms. 
 
 ## project Structure:
 ```bash
-public-safety-sound-classifier/
-├── app.py ← Flask web app
-├── PublicSafetyClassifier.ipynb ← Full training notebook
+Public_Safety_Sound_Classifier/
+├── app.py Flask app
+├── app_gradio.py ← Hugging Face Spcae app
+├── PublicSafetyClassifier.ipynb ← Full training 
 ├── models/
 │ ├── safety_classifier_model.h5
 │ └── label_encoder.pkl
 ├── templates/
 │ ├── index.html
 │ └── result.html
-├── data/ ← Audio dataset 
+├── data/ 
 │ └── UrbanSound8K.csv, folds
 ├── requirements.txt
 ├── README.md
@@ -45,7 +46,7 @@ After training on a filtered subset of UrbanSound8K:
 - **Recall (Unsafe)**: **~86%** after threshold tuning and class weighting
 - **False Negative Rate (Unsafe as Safe)**: Reduced from 100 to 65 with tuning
 
-![Confusion Matrix](confusion_matrix_example.png)
+![Confusion Matrix](confusion_matrix.png)
 
 
 ## Web App: Flask Interface
@@ -66,7 +67,7 @@ You can upload a `.wav` file through the web interface, and the model will retur
 
 1. **Clone the repo**:
    ```bash
-   git clone https://github.com/yourusername/public-safety-sound-classifier.git
+   git clone https://github.com/yourusername/Public_Safety_Sound_Classifier.git
    cd public-safety-sound-classifier
 
 2. Install dependencies: 
@@ -79,9 +80,14 @@ python app.py
 ```
 4. Visit http://127.0.0.1:5000
 
+5. Or you can try the model live via [Hugging Face Spaces](https://huggingface.co/spaces/ngnazz/public-safety-classifier)
+
+![Hugging Face App Screenshot](images/app.png)
+
 ## Training Notebook: 
-The full traning pipeline is available in the Jupyter notebook:
+The full training pipeline is available in the Jupyter notebook:
 - MFCC extraction
 - Class balancing (via weights)
-- Threshold tunning (recall vs. precision trade-off)
+- Threshold tuning (recall vs. precision trade-off)
 - Evaluation metrics and plots
+
