@@ -4,6 +4,12 @@ import numpy as np
 import os
 from tensorflow.keras.models import load_model
 import pickle
+import matplotlib
+matplotlib.use('Agg')  # Use non-GUI backend
+
+import matplotlib.pyplot as plt
+
+import librosa.display
 
 # Load model and label encoder
 model = load_model("models/safety_classifier_model.h5")
@@ -23,6 +29,18 @@ def extract_features(file_path):
     mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=40)
     return np.mean(mfcc.T, axis=0).reshape(1, -1)
 
+def plot_mfcc(file_path, out_path='static/mfcc.png'):
+    y, sr = librosa.load(file_path)
+    mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=40)
+    plt.figure(figsize=(10, 4))
+    librosa.display.specshow(mfcc, x_axis='time', sr=sr)
+    plt.colorbar()
+    plt.title('MFCC Spectrogram')
+    plt.tight_layout()
+    plt.savefig(out_path)   # ✅ Save instead of show
+    plt.close()
+
+    
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
@@ -31,6 +49,7 @@ def index():
             path = os.path.join(UPLOAD_FOLDER, audio.filename)
             audio.save(path)
 
+            plot_mfcc(path)
             # Feature extraction
             #features = extract_features(path)
             features = extract_features(path)  # shape (1, 40)

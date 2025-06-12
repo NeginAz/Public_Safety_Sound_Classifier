@@ -5,6 +5,8 @@
     <h2>Prediction: {{ label.upper() }}</h2>
     <p>Confidence Score: {{ confidence }}</p>
     <a href="/">Try another file</a>
+    <h3>MFCC Spectrogram:</h3>
+    <img src="{{ url_for('static', filename='mfcc.png') }}" alt="Spectrogram">
 </body>
 </html>
 
