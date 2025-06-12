@@ -6,10 +6,13 @@ from tensorflow.keras.models import load_model
 import pickle
 
 # Load model and label encoder
-model = load_model("../models/safety_classifier_model.h5")
+model = load_model("models/safety_classifier_model.h5")
 
-with open("../models/label_encoder.pkl", "rb") as f:
+with open("models/label_encoder.pkl", "rb") as f:
     le = pickle.load(f)
+
+with open("models/scaler.pkl", "rb") as f:
+    scaler = pickle.load(f)
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'uploads'
@@ -29,10 +32,14 @@ def index():
             audio.save(path)
 
             # Feature extraction
-            features = extract_features(path)
+            #features = extract_features(path)
+            features = extract_features(path)  # shape (1, 40)
+            features = scaler.transform(features)  # normalize
 
             # Predict
             pred_prob = model.predict(features)[0][0]
+            confidence = round(pred_prob*100, 2)
+            
             threshold = 0.4
             label_index = int(pred_prob > threshold)
             label = le.inverse_transform([label_index])[0]
