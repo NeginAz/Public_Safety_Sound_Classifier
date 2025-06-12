@@ -8,7 +8,7 @@ This project showcases end-to-end ML developement: from data preprocessing and m
 Urban sound detection can play a key role in safety systems for cities, campuses, or industrial sites. Detecting critical sounds such as **gunshots**, **rirens** , or **dog barks** helps flag potentially dangerous environments. This model aims to prioritze **recall for unsafe sounds**, ensuring that high risk events are rarely missed, even at the cost of  false alarms. 
 
 ## project Structure:
-
+```bash
 public-safety-sound-classifier/
 ├── app.py ← Flask web app
 ├── PublicSafetyClassifier.ipynb ← Full training notebook
@@ -23,7 +23,7 @@ public-safety-sound-classifier/
 ├── requirements.txt
 ├── README.md
 └── .gitignore
-
+```
 ## Model Overview: 
 
 
@@ -84,4 +84,4 @@ The full traning pipeline is available in the Jupyter notebook:
 - MFCC extraction
 - Class balancing (via weights)
 - Threshold tunning (recall vs. precision trade-off)
-- Evakuation metrics and plots
+- Evaluation metrics and plots
