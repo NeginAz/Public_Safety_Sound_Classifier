@@ -42,7 +42,7 @@ Public_Safety_Sound_Classifier/
 
 After training on a filtered subset of UrbanSound8K:
 
-- **Accuracy**: ~87%
+- **Accuracy**: ~94%
 - **Recall (Unsafe)**: **~86%** after threshold tuning and class weighting
 - **False Negative Rate (Unsafe as Safe)**: Reduced 
 
